@@ -56,8 +56,8 @@ public class interactionsDAO {
             public interactions mapRow(ResultSet rs,int row) throws SQLException{
                 interactions i = new interactions();
                 i.setInteraction_Id(rs.getInt("interactionsid"));
-                i.setClients_id(rs.getInt(" Clients_id"));
-                i.setDate_of_contact(rs.getInt("Date_of_contact"));
+                i.setClients_id(rs.getString(" Clients_id"));
+                i.setDate_of_contact(rs.getString("Date_of_contact"));
                 i.setContact_name(rs.getString("First_name"));
                 i.setContact_type(rs.getString("Contact_type"));
                 i.setConversation(rs.getString("Conversation"));
@@ -78,8 +78,8 @@ public class interactionsDAO {
         return template.query(sql,new RowMapper<interactions>(){
             public interactions mapRow(ResultSet rs,int row) throws SQLException{
                 interactions i = new interactions();
-                i.setClients_id(rs.getInt(1));
-                i.setDate_of_contact(rs.getInt(2));
+                i.setClients_id(rs.getString(1));
+                i.setDate_of_contact(rs.getString(2));
                 i.setContact_name(rs.getString(3));
                 i.setContact_type(rs.getString(4));
                 i.setConversation(rs.getString(5));

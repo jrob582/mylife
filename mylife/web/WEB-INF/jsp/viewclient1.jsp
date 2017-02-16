@@ -33,7 +33,7 @@
         <td>
           <a href="<c:url value="/client1/editclient1/${client1.id}" />"><button class="w3-btn w3-round w3-blue">Edit</button></a>
           <a href="<c:url value="/client1/deleteclient1/${client1.id}" />"><button class="w3-btn w3-round w3-red">Delete</button></a>
-          <a href="<c:url value="/client1/client1form/${client1.id}" />"><button class="w3-btn w3-round w3-green">Add Album</button></a>
+          <a href="<c:url value="/interactions/interactionsform/${client1.id}" />"><button class="w3-btn w3-round w3-green">Add Interactions</button></a>
         </td>  
       </tr>  
     </c:forEach>  

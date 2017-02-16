@@ -39,6 +39,8 @@ public class client1Validator implements Validator {
                 ValidationUtils.rejectIfEmptyOrWhitespace(errors, "lastname", "client1.lastname.required");
                 ValidationUtils.rejectIfEmptyOrWhitespace(errors, "addressline1", "client1.addressline1.required");
                 ValidationUtils.rejectIfEmptyOrWhitespace(errors, "city", "client1.city.required");
+                ValidationUtils.rejectIfEmptyOrWhitespace(errors, "state", "client1.state.required");
+                ValidationUtils.rejectIfEmptyOrWhitespace(errors, "zip", "client1.zip.required");
                 ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "client1.email.required");
                 ValidationUtils.rejectIfEmptyOrWhitespace(errors, "current_status","client1.current_status.required");
                 ValidationUtils.rejectIfEmptyOrWhitespace(errors, "phone_number", "client1.phone_number.required");

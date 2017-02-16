@@ -31,8 +31,8 @@ public class userController{
     @Autowired
     userDAO dao;
     
-    @Autowired
-    private userValidator userValidator;
+    //@Autowired
+    //private userValidator userValidator;
     
     private static final Logger logger = Logger.getLogger(userController.class.getName());
 
@@ -63,7 +63,7 @@ public class userController{
  
         return new ModelAndView("redirect:/");
     }
-    
+    /*
     @InitBinder("user")
     public void initBinder(WebDataBinder webDataBinder){
         webDataBinder.setValidator(userValidator);
@@ -75,6 +75,6 @@ public class userController{
  
     public void setuserValidator(userValidator userValidator) {
         this.userValidator = userValidator;
-    }
+    }*/
 }
 

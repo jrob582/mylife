@@ -13,30 +13,36 @@
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
   
-  <context:component-scan base-package="mylife.web"></context:component-scan>  
-  <context:component-scan base-package="mylife.validation"></context:component-scan>  
+    <context:component-scan base-package="mylife.web"></context:component-scan>  
+    <context:component-scan base-package="mylife.validator"></context:component-scan>  
   
-  <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">  
-    <property name="prefix" value="/WEB-INF/jsp/"></property>  
-    <property name="suffix" value=".jsp"></property>  
-  </bean>
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">  
+        <property name="prefix" value="/WEB-INF/jsp/"></property>  
+        <property name="suffix" value=".jsp"></property>  
+    </bean>
   
-  <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
         <property name="basename" value="/WEB-INF/messages" />
-  </bean>
+    </bean>
   
-  <mvc:resources mapping="/media/**" location="/media/" cache-period="10000" />
+    <mvc:resources mapping="/media/**" location="/media/" cache-period="10000" />
   
-  <mvc:annotation-driven />
+    <mvc:annotation-driven />
   
-  <bean id="jt" class="org.springframework.jdbc.core.JdbcTemplate">  
-    <property name="dataSource" ref="ds"></property>  
-  </bean>  
+    <bean id="jt" class="org.springframework.jdbc.core.JdbcTemplate">  
+        <property name="dataSource" ref="ds"></property>  
+    </bean>  
   
-  <bean id="client1-dao" class="mylife.repository.client1DAO">  
-    <property name="template" ref="jt"></property>  
-  </bean>
-  <bean id="client1-dao" class="mylife.repository.client1DAO">  
-    <property name="template" ref="jt"></property>  
-  </bean>  
+    <bean id="client1-dao" class="mylife.respository.client1DAO">  
+        <property name="template" ref="jt"></property>  
+    </bean>
+    <bean id="interactions-dao" class="mylife.respository.interactionsDAO">  
+        <property name="template" ref="jt"></property>  
+    </bean>
+  
+    <bean id="user-dao" class="mylife.respository.userDAO">  
+        <property name="template" ref="jt"></property>  
+    </bean>
+ 
+ 
 </beans>

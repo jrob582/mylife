@@ -46,15 +46,15 @@ public class interactionsController {
     }
 
     @RequestMapping("/interactions/interactionsform/{id}")
-    public ModelAndView showformWithclient1(@PathVariable int id, String contact_type, String contact_name, String conversation) {
+    public ModelAndView showformWithclient1(@PathVariable int id, String contact_type, String contact_name, String conversation, String clients_id, String date_of_contact) {
         
          client1 client1 = adao.getclient1ById(id);
         
         interactions interactions = new interactions();
-        interactions.setClients_id(id);
+        interactions.setClients_id(clients_id);
         interactions.setContact_name(contact_name);
         interactions.setContact_type(contact_type);
-        interactions.setDate_of_contact(id);
+        interactions.setDate_of_contact(date_of_contact);
         interactions.setConversation(conversation);
 
         interactions.setclient1(dao.getclient1Map());
