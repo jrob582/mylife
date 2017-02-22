@@ -18,6 +18,7 @@ public class user  implements Serializable {
     
     private String username;
     private String password;
+    private Boolean enabled = true;
     private List<String> roles;
     private Map<String, String> rolemap;
     
@@ -26,13 +27,13 @@ public class user  implements Serializable {
         this.rolemap.put("role_user", "user");
         this.rolemap.put("role_admin", "administrator");
     }
-    
-    public String getUser_name() {
+
+    public String getUsername() {
         return username;
     }
 
-    public void setUser_name(String user_name) {
-        this.username = user_name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -43,26 +44,28 @@ public class user  implements Serializable {
         this.password = password;
     }
 
-  public Map<String,String> getrolemap(){
-      return this.rolemap;
-  }
-   
-  public List<String> getroles(){
-      return roles;
-  }
-  
-  public void setroles (List<String> roles){
-      this.roles = roles;
-  }
-  
-  public String toString() {
-        StringBuffer buffer = new StringBuffer();
-        buffer.append("User Name: " + this.username + ";");
-        buffer.append("Password: " + password + ";");
-     
-        
-              return buffer.toString();
+    public Boolean getEnabled() {
+        return enabled;
     }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+    
+    
+
+    public List<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
+    }
+
+    public Map<String, String> getRolemap() {
+        return rolemap;
+    }
+
     }
     
 

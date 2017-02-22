@@ -14,7 +14,7 @@ import java.util.Map;
  */
 public class interactions implements Serializable {
     private int interactionid;
-    private String clientsid;
+    private int clientsid;
     private String date_of_contact;
     private String contact_name;
     private String contact_type;
@@ -40,11 +40,11 @@ public class interactions implements Serializable {
         this.interactionid = interaction_Id;
     }
 
-    public String getClients_id() {
+    public int getClients_id() {
         return clientsid;
     }
 
-    public void setClients_id(String clients_id) {
+    public void setClients_id(int clients_id) {
         this.clientsid = clients_id;
     }
 

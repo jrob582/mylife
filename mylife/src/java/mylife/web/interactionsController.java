@@ -17,10 +17,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import java.util.HashMap;
+import java.util.Map;
 import mylife.objects.Message;
 import mylife.respository.client1DAO;
 import mylife.objects.client1;
 import mylife.objects.interactions;
+import mylife.validator.interactionsValidator;
+import org.springframework.validation.Validator;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 
 /**
  *
@@ -36,27 +41,25 @@ public class interactionsController {
     client1DAO adao = new client1DAO();
 
     private static final Logger logger = Logger.getLogger(interactionsController.class.getName());
+    private interactionsValidator interactionsValidator;
 
     @RequestMapping("/interactions/interactionsform")
     public ModelAndView showform() {
         interactions interactions = new interactions();
         interactions.setclient1(dao.getclient1Map());
 
-        return new ModelAndView("interactionform", "interaction", interactions);
+        return new ModelAndView("interactionsform", "interactions", interactions);
     }
 
     @RequestMapping("/interactions/interactionsform/{id}")
-    public ModelAndView showformWithclient1(@PathVariable int id, String contact_type, String contact_name, String conversation, String clients_id, String date_of_contact) {
+    public ModelAndView showformWithclient1(@PathVariable int id) {
         
          client1 client1 = adao.getclient1ById(id);
         
         interactions interactions = new interactions();
-        interactions.setClients_id(clients_id);
-        interactions.setContact_name(contact_name);
-        interactions.setContact_type(contact_type);
-        interactions.setDate_of_contact(date_of_contact);
-        interactions.setConversation(conversation);
-
+        interactions.setClients_id(id);
+        interactions.setclient1((Map<Integer, String>) client1);
+       
         interactions.setclient1(dao.getclient1Map());
 
         return new ModelAndView("interactionsform", "interactions", interactions);
@@ -81,7 +84,7 @@ public class interactionsController {
 
     @RequestMapping("/interactions/viewinteractions/{pageid}")
     public ModelAndView viewinteractions(@PathVariable int pageid, HttpServletRequest request) {
-        int total = 6;
+        int total = 25;
         int start = 1;
 
         if (pageid != 1) {
@@ -147,5 +150,17 @@ public class interactionsController {
         request.getSession().setAttribute("message", msg);
 
         return new ModelAndView("redirect:/interactions/view");
+    }
+        @InitBinder("interactions")
+    public void initBinder(WebDataBinder webDataBinder, Validator interactionsValidator){
+        webDataBinder.setValidator(interactionsValidator);
+    }
+    
+    public interactionsValidator getinteractionsValidator(interactionsValidator interactionsValidator) {
+        return interactionsValidator;
+    }
+ 
+    public void setinteractionsValidator(interactionsValidator interactionsValidator) {
+        this.interactionsValidator = interactionsValidator;
     }
 }

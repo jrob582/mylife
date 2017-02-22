@@ -71,7 +71,7 @@ public class client1DAO {
     }
 
             public client1 getclient1ById(int id){
-        String sql = "SELECT client1Id AS id, (firstname, lastname, addressline1, addressline2, city, state, zip, email, currentstatus, phone_number) FROM client1 WHERE client1Id = ?";
+        String sql = "SELECT client1 AS id, (firstname, lastname, addressline1, addressline2, city, state, zip, email, currentstatus, phone_number) FROM client1 WHERE client1Id = ?";
         return template.queryForObject(sql,new Object[]{id},new BeanPropertyRowMapper<client1>(client1.class));
     }
         
@@ -100,7 +100,7 @@ public class client1DAO {
         });
     }
     public int getclient1Count() {
-        String sql = "SELECT COUNT(client1ID) AS rowcount FROM client1";
+        String sql = "SELECT COUNT(client1) AS rowcount FROM client1";
         SqlRowSet rs = template.queryForRowSet(sql);
         
         if (rs.next()) {

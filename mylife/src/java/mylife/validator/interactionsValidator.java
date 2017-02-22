@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
  *
  * @author johna
  */
+@Component
 public class interactionsValidator implements Validator {
     
     
@@ -47,13 +48,7 @@ public class interactionsValidator implements Validator {
           
                     
           
-        if(interactions.getClients_id().length() > 120) {
-	    errors.rejectValue("clients_id","interactions.clients_id.length");
-	}
-                
-        if (!interactions.getClients_id().matches("^[A-Za-z0-9]*$")) {
-            errors.rejectValue("clients_id","interactions.clients_id.pattern");
-        }
+
 	
         if (interactions.getDate_of_contact().length() > 120){
             errors.rejectValue("date_of_contact", "interactions.date_of_contact.length");

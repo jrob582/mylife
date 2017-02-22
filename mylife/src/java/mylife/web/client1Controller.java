@@ -61,7 +61,7 @@ public class client1Controller {
     }
 
     @RequestMapping("/client1/viewclient1")
-    public ModelAndView viewartist(HttpServletRequest request) {
+    public ModelAndView viewclient1(HttpServletRequest request) {
         return this.viewclient1(1, request);
     }
 

@@ -29,17 +29,17 @@ public class userDAO {
     }
 
     public int save(user user){
-        String sql = "INSERT INTO user (username, password,) values(?,?)";
+        String sql = "INSERT INTO user (username, password, enabled) values(?,md5(?),?)";
         
-          Object[] values = {user.getUser_name(), user.getPassword(),};
+          Object[] values = {user.getUsername(), user.getPassword(), user.getEnabled()};
           
         return template.update(sql,values);
     }
 
     public int update(user user){
-        String sql = "UPDATE user SET username=?, password=?, WHERE userid= ?"; 
+        String sql = "UPDATE user SET (username=?, password= md5(?), enabled= ?) WHERE userid= ?"; 
         
-         Object[] values = {user.getUser_name(), user.getPassword(),};
+         Object[] values = {user.getUsername(), user.getPassword(), user.getEnabled()};
         return template.update(sql,values);
     }
 
@@ -53,9 +53,9 @@ public class userDAO {
         return template.query("SELECT * FROM user",new RowMapper<user>(){
             public user mapRow(ResultSet rs,int row) throws SQLException{
                 user u = new user();
-                u.setUser_name(rs.getString("User_name"));
+                u.setUsername(rs.getString("username"));
                 u.setPassword(rs.getString(" Password"));
-               
+                u.setEnabled(rs.getBoolean("enabled"));
  
                
                 return u;
@@ -64,7 +64,7 @@ public class userDAO {
     }
 
             public user getuserById(int id){
-        String sql = "SELECT userId AS id, (username, password ) FROM user WHERE userId = ?";
+        String sql = "SELECT userId AS id, (username, password, enabled ) FROM user WHERE userId = ?";
         return template.queryForObject(sql,new Object[]{id},new BeanPropertyRowMapper<user>(user.class));
     }
         
@@ -74,9 +74,9 @@ public class userDAO {
         return template.query(sql,new RowMapper<user>(){
             public user mapRow(ResultSet rs,int row) throws SQLException{
                 user u = new user();
-                u.setUser_name(rs.getString(1));
+                u.setUsername(rs.getString(1));
                 u.setPassword(rs.getString(2));
-              
+                u.setEnabled(rs.getBoolean(3));
         
                 
                 
