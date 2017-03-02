@@ -4,14 +4,14 @@
 <%@ include file="theme/header.jsp" %>
 
 <header class="w3-container" style="padding-top:22px">
-    <h5><b><i class="fa fa-dashboard"></i> Manage client1 > Add client1</b></h5>
+    <h5><b><i class="fa fa-dashboard"></i> Manage Client1 > Add Client1</b></h5>
 </header>
 
 <div class="w3-row-padding w3-half w3-margin-bottom">
 
     <div class="w3-card-4">
         <div class="w3-container w3-blue">
-            <h2>client1 Information</h2>
+            <h2>Client1 Information</h2>
         </div>
 
         <form:form method="post" action="save" cssClass="w3-container" commandName="client1">

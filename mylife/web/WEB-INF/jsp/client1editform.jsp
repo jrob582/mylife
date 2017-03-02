@@ -4,7 +4,7 @@
 <%@ include file="theme/header.jsp" %>
 
 <header class="w3-container" style="padding-top:22px">
-    <h5><b><i class="fa fa-dashboard"></i> client1> client1</b></h5>
+    <h5><b><i class="fa fa-dashboard"></i> Client1> Client1</b></h5>
 </header>
 
 <div class="w3-row-padding w3-half w3-margin-bottom">
@@ -14,7 +14,7 @@
             <h2>Client1 Information</h2>
         </div>
 
-        <form:form method="POST" action="/mylife/client1/editsave" cssClass="w3-container" commandName="client1">
+        <form:form method="POST" action="/mylife/client1/update" cssClass="w3-container" commandName="client1">
             <form:hidden path="idclient1"  />
 
             <div class="w3-padding-8">
@@ -42,7 +42,7 @@
             </div>
 
             <div class="w3-padding-8">
-                <button type="submit" class="w3-btn w3-padding w3-blue" style="width:120px">Save</button>
+                <button type="submit" class="w3-btn w3-padding w3-blue" style="width:120px">Update</button>
             </div>
         </form:form>
 

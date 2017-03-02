@@ -16,7 +16,7 @@
 
         <form:form method="post" action="/My Life/interactions/save" cssClass="w3-container" commandName="interactions"> 
             <div class="w3-padding-8">
-                <label><b>Name</b></label>
+                <label><b>Clients</b></label>
                 <form:input path="Interaction_Id" cssClass="w3-input w3-border" placeholder="Interaction_Id"  />
                 <form:errors path="Interaction_Id" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
                 <form:input path="Clients_id" cssClass="w3-input w3-border" placeholder="Clients_id"  />
@@ -32,22 +32,22 @@
             </div>
 
             <c:choose>
-                <c:when test="${not empty interactions.interactions}">
-                    <form:hidden path="interactions" />
+                <c:when test="${not empty client1.client1}">
+                    <form:hidden path="clients_id" />
                     <div class="w3-padding-8">
-                        <label><b>Interactions</b></label>
+                        <label><b>Client1</b></label>
                         <div class="w3-panel w3-border">
-                            <p><b>${interactions.interactions.name}</b></p>
+                            <p><b>${client1.client1.Firstname}</b></p>
                         </div>
                     </div>
                 </c:when>
 
                 <c:otherwise>
                     <div class="w3-padding-8">
-                        <label><b>Interactions</b></label>
-                        <form:select path="interactions" cssClass="w3-select w3-border">
-                            <form:option value="-1">Select Interactions</form:option>
-                            <form:options items="${interactions.interactions}"  />
+                        <label><b>Client</b></label>
+                        <form:select path="clients_id" cssClass="w3-select w3-border">
+                            <form:option value="-1">Select Client1</form:option>
+                            <form:options items="${client1.client1}"  />
                         </form:select>
                     </div>
                 </c:otherwise>

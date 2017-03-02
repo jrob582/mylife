@@ -23,18 +23,18 @@
 
   <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">  
     <tr>
-      <th>Title</th>
+      <th>Interactionid</th>
       <th>Client1</th>
       <th>Action</th>
     </tr>  
 
-    <c:forEach var="album" items="${list}">   
+    <c:forEach var="interactions" items="${list}">   
       <tr>  
-        <td>${interactions.title}</td>
-        <td>${interactions.client1.name}</td>
+        <td>${interactions.interactionid}</td>
+        <td>${interactions.client1.fisrtname}</td>
         <td>
-          <a href="<c:url value="/interactions/editinteractions/${interactions.id}" />"><button class="w3-btn w3-round w3-blue">Edit</button></a>
-          <a href="<c:url value="/interactions/deleteinteractions/${interactions.id}" />"><button class="w3-btn w3-round w3-red">Delete</button></a>
+          <a href="<c:url value="/interactions/editinteractions/${interactions.interactionid}" />"><button class="w3-btn w3-round w3-blue">Edit</button></a>
+          <a href="<c:url value="/interactions/deleteinteractions/${interactions.interactionid}" />"><button class="w3-btn w3-round w3-red">Delete</button></a>
         </td>  
       </tr>  
     </c:forEach>  
