@@ -43,6 +43,8 @@ public class client1Controller {
     @RequestMapping(value = "/client1/save", method = RequestMethod.POST)
     public ModelAndView save(@ModelAttribute("client1") @Valid client1 client1, BindingResult result, HttpServletRequest request) {
         if (result.hasErrors()) {
+            
+            logger.info(result.getFieldError().toString());
             return new ModelAndView("client1form", "client1", client1);
         }
 
@@ -102,12 +104,14 @@ public class client1Controller {
     @RequestMapping(value = "/client1/editclient1/{id}")
     public ModelAndView edit(@PathVariable int id) {
         client1 client1 = dao.getclient1ById(id);
+        
         return new ModelAndView("client1editform", "client1", client1);
     }
 
     @RequestMapping(value = "/client1/editsave", method = RequestMethod.POST)
     public ModelAndView editsave(@ModelAttribute("client1") @Valid client1 client1, BindingResult result, HttpServletRequest request) {
         if (result.hasErrors()) {
+             logger.info(result.getFieldError().toString());
             return new ModelAndView("client1editform", "client1", client1);
         }
 

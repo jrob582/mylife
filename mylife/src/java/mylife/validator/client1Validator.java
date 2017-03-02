@@ -38,9 +38,6 @@ public class client1Validator implements Validator {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "firstname", "client1.firstname.required");
                 ValidationUtils.rejectIfEmptyOrWhitespace(errors, "lastname", "client1.lastname.required");
                 ValidationUtils.rejectIfEmptyOrWhitespace(errors, "addressline1", "client1.addressline1.required");
-                ValidationUtils.rejectIfEmptyOrWhitespace(errors, "city", "client1.city.required");
-                ValidationUtils.rejectIfEmptyOrWhitespace(errors, "state", "client1.state.required");
-                ValidationUtils.rejectIfEmptyOrWhitespace(errors, "zip", "client1.zip.required");
                 ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "client1.email.required");
                 ValidationUtils.rejectIfEmptyOrWhitespace(errors, "current_status","client1.current_status.required");
                 ValidationUtils.rejectIfEmptyOrWhitespace(errors, "phone_number", "client1.phone_number.required");
@@ -61,14 +58,14 @@ public class client1Validator implements Validator {
             errors.rejectValue("lastname","client1.lastname.pattern");
         }
         
-        if (client1.getAddressline1().length() > 120){
+        if (client1.getAddressline1().length() > 128){
             errors.rejectValue("addressline1","client1.addressline1.length");
         }
-        if (!client1.getAddressline1().matches("^[A-Za-z0-9]*$")){
+        if (!client1.getAddressline1().matches("^[A-Za-z0-9 _.,!\"'/$]*$")){
             errors.rejectValue("addressline1","client1.addressline1.pattern");
         }
         
-        if (client1.getAddressline2().length() > 120){
+        if (client1.getAddressline2().length() > 128){
             errors.rejectValue("addressline2","client1.addressline2.length");
         }
         
@@ -92,11 +89,11 @@ public class client1Validator implements Validator {
             errors.rejectValue("state","client1.state.pattern");
         }
            
-        if (client1.getZip().length() >65){
+        if (client1.getZip().length() >10){
             errors.rejectValue("zip","client1.zip.length");
         }
         
-        if (!client1.getZip().matches("^/d{5}(?:[-/s]/d{4})?$")){
+        if (!client1.getZip().matches("^[A-Za-z0-9]*$")){
             errors.rejectValue("zip","client1.zip.pattern");
         }
         
@@ -104,7 +101,7 @@ public class client1Validator implements Validator {
             errors.rejectValue("email","client1.email.length");
         }
         
-        if (!client1.getEmail().matches("^([0-9a-zA-Z]([-./w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-/w]*[0-9a-zA-Z]/.)+[a-zA-Z]{2,9})$")){
+        if (!client1.getEmail().matches("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$")){
             errors.rejectValue("email","client1.email.pattern");
             
         }      
@@ -121,7 +118,7 @@ public class client1Validator implements Validator {
             errors.rejectValue("phone_number","client1.phone_number.length");
         }
         
-        if (!client1.getPhone_number().matches("^/s*(?:/+?(/d{1,3}))?[-. (]*(/d{3})[-. )]*(/d{3})[-. ]*(/d{4})(?: *x(/d+))?/s*$")){
+        if (!client1.getPhone_number().matches("^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$")){
             errors.rejectValue("phone_number","client1.phone_number.pattern");
         }
         

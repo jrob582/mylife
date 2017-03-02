@@ -33,12 +33,12 @@ public class client1DAO {
         String sql = "INSERT INTO client1 (firstname, lastname, addressline1, addressline2, city, state, zip, email, currentstatus, phone_number) values(?,?,?,?,?,?,?,?,?,?)";
         
           Object[] values = {client1.getFirstname(), client1.getLastname(), client1.getAddressline1(), client1.getAddressline2(), client1.getCity(), client1.getState(), client1.getZip(), client1.getEmail(), client1.getCurrent_status(), client1.getPhone_number()};
-          
+          logger.info("Interactions DAO save values: " + values);
         return template.update(sql,values);
     }
 
     public int update(client1 client1){
-        String sql = "UPDATE client1 SET firstname=?, lastname=?, addressline1=?, addressline2=?, city=?, state=?, zip=?, email=?, current_status=?, phone_number=? WHERE idclient1= ?"; 
+        String sql = "UPDATE client1 SET firstname=?, lastname=?, addressline1=?, addressline2=?, city=?, state=?, zip=?, email=?, currentstatus=?, phone_number=? WHERE idclient1= ?"; 
         
          Object[] values = {client1.getFirstname(), client1.getLastname(), client1.getAddressline1(), client1.getAddressline2(), client1.getCity(), client1.getState(), client1.getZip(), client1.getEmail(), client1.getCurrent_status(), client1.getPhone_number(), client1.getIdclient1()};
         return template.update(sql,values);
@@ -71,7 +71,7 @@ public class client1DAO {
     }
 
             public client1 getclient1ById(int id){
-        String sql = "SELECT client1 AS id, (firstname, lastname, addressline1, addressline2, city, state, zip, email, currentstatus, phone_number) FROM client1 WHERE client1Id = ?";
+        String sql = "SELECT idclient1 AS id, firstname, lastname, addressline1, addressline2, city, state, zip, email, currentstatus, phone_number FROM client1 WHERE idclient1 = ?";
         return template.queryForObject(sql,new Object[]{id},new BeanPropertyRowMapper<client1>(client1.class));
     }
         
@@ -100,7 +100,7 @@ public class client1DAO {
         });
     }
     public int getclient1Count() {
-        String sql = "SELECT COUNT(client1) AS rowcount FROM client1";
+        String sql = "SELECT COUNT(idclient1) AS rowcount FROM client1";
         SqlRowSet rs = template.queryForRowSet(sql);
         
         if (rs.next()) {

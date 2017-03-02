@@ -22,10 +22,10 @@ import mylife.objects.Message;
 import mylife.respository.client1DAO;
 import mylife.objects.client1;
 import mylife.objects.interactions;
-import mylife.validator.interactionsValidator;
-import org.springframework.validation.Validator;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
+//import mylife.validator.interactionsValidator;
+//import org.springframework.validation.Validator;
+//import org.springframework.web.bind.WebDataBinder;
+//import org.springframework.web.bind.annotation.InitBinder;
 
 /**
  *
@@ -41,7 +41,7 @@ public class interactionsController {
     client1DAO adao = new client1DAO();
 
     private static final Logger logger = Logger.getLogger(interactionsController.class.getName());
-    private interactionsValidator interactionsValidator;
+//    private interactionsValidator interactionsValidator;
 
     @RequestMapping("/interactions/interactionsform")
     public ModelAndView showform() {
@@ -151,16 +151,16 @@ public class interactionsController {
 
         return new ModelAndView("redirect:/interactions/view");
     }
-        @InitBinder("interactions")
-    public void initBinder(WebDataBinder webDataBinder, Validator interactionsValidator){
-        webDataBinder.setValidator(interactionsValidator);
-    }
-    
-    public interactionsValidator getinteractionsValidator(interactionsValidator interactionsValidator) {
-        return interactionsValidator;
-    }
- 
-    public void setinteractionsValidator(interactionsValidator interactionsValidator) {
-        this.interactionsValidator = interactionsValidator;
-    }
+//        @InitBinder("interactions")
+//    public void initBinder(WebDataBinder webDataBinder, Validator interactionsValidator){
+//        webDataBinder.setValidator(interactionsValidator);
+//    }
+//    
+//    public interactionsValidator getinteractionsValidator(interactionsValidator interactionsValidator) {
+//        return interactionsValidator;
+//    }
+// 
+//    public void setinteractionsValidator(interactionsValidator interactionsValidator) {
+//        this.interactionsValidator = interactionsValidator;
+//    }
 }
