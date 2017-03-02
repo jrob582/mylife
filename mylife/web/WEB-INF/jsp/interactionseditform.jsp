@@ -23,8 +23,8 @@
       </div>
       
       <div class="w3-padding-8">
-        <label><b>Artist</b></label>
-        <form:select path="artistid" cssClass="w3-select w3-border" items="${command.artists}" />
+        <label><b>Interactions</b></label>
+        <form:select path="interactionsid" cssClass="w3-select w3-border" items="${interactions.interactions}" />
       </div>
       
       <div class="w3-padding-8">

@@ -27,7 +27,10 @@
                 <form:errors path="Addressline2" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
                 <form:input path="City" cssClass="w3-input w3-border" placeholder="City" />
                 <form:errors path="City" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
-                <form:input path="State" cssClass="w3-input w3-border" placerholder="State" />
+                <form:select path="state" cssClass="w3-select w3-border">
+                   <form:option value="">State</form:option>
+                   <form:options items="${client1.states}"  />
+               </form:select>
                 <form:errors path="State" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
                 <form:input path="Zip" cssClass="w3-input w3-border" placeholder="Zip" />
                 <form:errors path="Zip" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />

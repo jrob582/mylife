@@ -33,6 +33,7 @@ public class interactionsDAO {
     public int save(interactions interactions){
         String sql = "INSERT INTO interactions (clientsid, date_of_contact, contact_name, contact_type, coversation) values(?,?,?,?,?)";
         
+                
           Object[] values = {interactions.getClients_id(), interactions.getDate_of_contact(), interactions.getContact_name(), interactions.getContact_type(), interactions.getConversation()};
           
         return template.update(sql,values);

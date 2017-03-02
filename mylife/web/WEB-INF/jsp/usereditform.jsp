@@ -15,19 +15,18 @@
     </div>
 
     <form:form method="post" action="/mylife/user/save" cssClass="w3-container" commandName="user">
+        <form:hidden path="username" />
       <div class="w3-padding-8">
         <label><b>Username</b></label>
         <form:input path="username" cssClass="w3-input w3-border"  />
         <form:errors path="username" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
-      </div>
       
-      <div class="w3-padding-8">
         <label><b>Password</b></label>
         <form:password path="password" cssClass="w3-input w3-border"  />
         <form:errors path="password" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
-      </div>
-      
-      <div class="w3-padding-8">
+        <form:checkbox path="enabled" cssClass="w3-check" />
+        <label>Enabled</label>
+        
         <label><b>Roles</b></label>
         <form:select multiple="true" path="roles" cssClass="w3-select w3-border">
             <form:options items="${user.rolemap}" />
