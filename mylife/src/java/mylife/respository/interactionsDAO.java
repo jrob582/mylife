@@ -36,6 +36,8 @@ public class interactionsDAO {
                 
           Object[] values = {interactions.getClients_id(), interactions.getDate_of_contact(), interactions.getContact_name(), interactions.getContact_type(), interactions.getConversation()};
           
+          logger.info ("Interactions DAO save values: " + values);
+          
         return template.update(sql,values);
     }
 

@@ -4,17 +4,17 @@
 <%@ include file="theme/header.jsp" %>
 
 <header class="w3-container" style="padding-top:22px">
-    <h5><b><i class="fa fa-dashboard"></i> Client1> Client1</b></h5>
+    <h5><b><i class="fa fa-dashboard"></i> Client > Client</b></h5>
 </header>
 
 <div class="w3-row-padding w3-half w3-margin-bottom">
 
     <div class="w3-card-4">
         <div class="w3-container w3-blue">
-            <h2>Client1 Information</h2>
+            <h2>Client Information</h2>
         </div>
 
-        <form:form method="POST" action="/mylife/client1/update" cssClass="w3-container" commandName="client1">
+        <form:form method="POST" action="/My Life/client1/update" cssClass="w3-container" commandName="client1">
             <form:hidden path="idclient1"  />
 
             <div class="w3-padding-8">

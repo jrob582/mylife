@@ -77,7 +77,7 @@ public class client1Validator implements Validator {
             errors.rejectValue("city","client1.city.length");
         }
         
-        if (!client1.getCity().matches("^[A-Za-z0-9]*$")){
+        if (!client1.getCity().matches("^[a-zA-Z-\\s]+$")){
             errors.rejectValue("city","client1.city.pattern" );
         }
         

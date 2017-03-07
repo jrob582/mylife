@@ -24,17 +24,18 @@
   <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">  
     <tr>
       <th>Interactionid</th>
-      <th>Client1</th>
+      <th>First Name</th>
       <th>Action</th>
     </tr>  
 
     <c:forEach var="interactions" items="${list}">   
       <tr>  
         <td>${interactions.interactionid}</td>
-        <td>${interactions.client1.fisrtname}</td>
+        <td>${interactions.firstname}</td>
         <td>
           <a href="<c:url value="/interactions/editinteractions/${interactions.interactionid}" />"><button class="w3-btn w3-round w3-blue">Edit</button></a>
           <a href="<c:url value="/interactions/deleteinteractions/${interactions.interactionid}" />"><button class="w3-btn w3-round w3-red">Delete</button></a>
+          <a href="<c:url value="/client1/client1form/${interactions.interactionid}" />"><button class="w3-btn w3-round w3-green">Add Client</button></a>
         </td>  
       </tr>  
     </c:forEach>  

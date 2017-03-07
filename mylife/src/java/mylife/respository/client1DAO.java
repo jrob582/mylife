@@ -38,7 +38,7 @@ public class client1DAO {
     }
 
     public int update(client1 client1){
-        String sql = "UPDATE client1 SET firstname=?, lastname=?, addressline1=?, addressline2=?, city=?, state=?, zip=?, email=?, currentstatus=?, phone_number=? WHERE client1= ?"; 
+        String sql = "UPDATE client1 SET firstname=?, lastname=?, addressline1=?, addressline2=?, city=?, state=?, zip=?, email=?, currentstatus=?, phone_number=? WHERE idclient1= ?"; 
         
          Object[] values = {client1.getFirstname(), client1.getLastname(), client1.getAddressline1(), client1.getAddressline2(), client1.getCity(), client1.getState(), client1.getZip(), client1.getEmail(), client1.getCurrent_status(), client1.getPhone_number(), client1.getIdclient1()};
         return template.update(sql,values);

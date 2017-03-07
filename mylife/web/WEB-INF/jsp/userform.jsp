@@ -10,7 +10,7 @@
 <div class="w3-row-padding w3-half w3-margin-bottom">
 
   <div class="w3-card-4">
-    <div class="w3-container w3-blue">
+    <div class="w3-container w3-red">
       <h2>User Information</h2>
     </div>
 
@@ -36,7 +36,7 @@
       </div>
       
       <div class="w3-padding-8">
-        <button type="submit" class="w3-btn w3-padding w3-blue" style="width:120px">Save</button>
+        <button type="submit" class="w3-btn w3-padding w3-red" style="width:120px">Save</button>
       </div>
     </form:form>
   </div>

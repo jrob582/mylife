@@ -58,7 +58,7 @@ public class interactionsController {
         
         interactions interactions = new interactions();
         interactions.setClients_id(id);
-        interactions.setclient1((Map<Integer, String>) client1);
+
        
         interactions.setclient1(dao.getclient1Map());
 
