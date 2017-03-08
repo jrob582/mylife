@@ -38,7 +38,7 @@ public class userDAO {
 
         int u = template.update(sql, values);
 
-        sql = "INSERT INTO user_roles (username, role) VALUES (?, ?)";
+        sql = "INSERT INTO user_roles (username,role) VALUES (?, ?)";
 
         for (String role : user.getRoles()) {
             Object[] role_values = {user.getUsername(), role};
@@ -57,21 +57,21 @@ public class userDAO {
     
 
     public int update(user user) {
-        String sql = "UPDATE user SET (username=?, password= md5(?), enabled= ?) WHERE userid= ?";
+        String sql = "UPDATE users SET username=?, password= md5(?), enabled= ? WHERE userid= ?";
 
         Object[] values = {user.getUsername(), user.getPassword(), user.getEnabled()};
         return template.update(sql, values);
     }
 
-    public int delete(int id) {
-        String sql = "DELETE FROM user WHERE userid=?";
+    public int delete(String username) {
+        String sql = "DELETE FROM user_roles WHERE username=?";
 
-        Object[] values = {id};
+        Object[] values = {username};
         return template.update(sql, values);
     }
 
     public List<user> getuserList() {
-        return template.query("SELECT * FROM user", new RowMapper<user>() {
+        return template.query("SELECT * FROM users", new RowMapper<user>() {
             public user mapRow(ResultSet rs, int row) throws SQLException {
                 user u = new user();
                 u.setUsername(rs.getString("username"));
@@ -84,12 +84,13 @@ public class userDAO {
     }
 
     public user getuserById(int id) {
-        String sql = "SELECT userId AS id, (username, password, enabled ) FROM user WHERE username = ?";
+        String sql = "SELECT username AS id, (username, password, enabled ) FROM users WHERE username = ?";
         return template.queryForObject(sql, new Object[]{id}, new BeanPropertyRowMapper<user>(user.class));
     }
 
     public List<user> getuserByPage(int start, int total) {
-        String sql = "SELECT * FROM user LIMIT " + (start - 1) + "," + total;
+        String sql = "SELECT * FROM users LIMIT " + (start - 1) + "," + total; 
+            
         return template.query(sql, new RowMapper<user>() {
             public user mapRow(ResultSet rs, int row) throws SQLException {
                 user u = new user();
@@ -103,7 +104,7 @@ public class userDAO {
     }
 
     public int getuserCount() {
-        String sql = "SELECT COUNT(userID) AS rowcount FROM user";
+        String sql = "SELECT COUNT(username) AS rowcount FROM users";
         SqlRowSet rs = template.queryForRowSet(sql);
 
         if (rs.next()) {
@@ -111,5 +112,9 @@ public class userDAO {
         }
 
         return 1;
+    }
+    public user getUsersbyUsername(String username){
+        String sql = "SELECT * FROM users WHERE username = ?";
+         return template.queryForObject(sql, new Object[]{username}, new BeanPropertyRowMapper<user>(user.class));
     }
 }

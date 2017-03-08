@@ -110,4 +110,8 @@ public class client1DAO {
         return 1;
     }
 
+    public client1 getclient1byFirstname(String FirstName) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

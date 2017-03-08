@@ -95,7 +95,7 @@ public class interactionsDAO {
         });
     }
     public int getinteractionsCount() {
-        String sql = "SELECT COUNT(interactionsID) AS rowcount FROM interactions";
+        String sql = "SELECT COUNT(interactionID) AS rowcount FROM interactions";
         SqlRowSet rs = template.queryForRowSet(sql);
         
         if (rs.next()) {

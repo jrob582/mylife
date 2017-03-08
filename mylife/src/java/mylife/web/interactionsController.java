@@ -82,6 +82,12 @@ public class interactionsController {
         return new ModelAndView("redirect:/interactions/viewinteractions");
     }
 
+        @RequestMapping("/interactions/viewinteractions")
+    public ModelAndView viewinteractions(HttpServletRequest request) {
+        return this.viewinteractions(1, request);
+    }
+    
+    
     @RequestMapping("/interactions/viewinteractions/{pageid}")
     public ModelAndView viewinteractions(@PathVariable int pageid, HttpServletRequest request) {
         int total = 25;

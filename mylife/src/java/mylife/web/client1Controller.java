@@ -119,7 +119,7 @@ public class client1Controller {
 
         Message msg = null;
         if (r == 1) {
-            msg = new Message(Message.Level.INFO, "client1 has been successfully saved");
+            msg = new Message(Message.Level.INFO, "Client has been successfully saved");
         } else {
             msg = new Message(Message.Level.ERROR, "Edit client failed");
         }
@@ -135,7 +135,7 @@ public class client1Controller {
 
         Message msg = null;
         if (r == 1) {
-            msg = new Message(Message.Level.INFO, "client1 has been successfully deleted") {
+            msg = new Message(Message.Level.INFO, "Client has been successfully deleted") {
             };
         } else {
             msg = new Message(Message.Level.ERROR, "Delete client1 failed");
