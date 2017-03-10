@@ -14,7 +14,7 @@
             <h2>Client Information</h2>
         </div>
 
-        <form:form method="POST" action="/My Life/client1/update" cssClass="w3-container" commandName="client1">
+        <form:form method="POST" action="/mylife/client1/editsave" cssClass="w3-container" commandName="client1">
             <form:hidden path="idclient1"  />
 
             <div class="w3-padding-8">

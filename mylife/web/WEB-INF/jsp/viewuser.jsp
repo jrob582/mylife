@@ -33,8 +33,8 @@
            <td>${user.enabled}</td> 
         <td>
           <a href="<c:url value="/user/edituser/${user.username}" />"><button class="w3-btn w3-round w3-blue">Edit</button></a>
-         
-          <a href="<c:url value="/user/userform/${user.username}" />"><button class="w3-btn w3-round w3-green">Add User</button></a>
+    <!--      <a href="<c:url value="/user/deleteuser/${user.username}"/>"><button class="w3-btn w3-round w3-red">Delete</button></a> -->
+          
         </td>  
       </tr>  
     </c:forEach>  

@@ -4,7 +4,7 @@
 <%@ include file="theme/header.jsp" %>
 
 <header class="w3-container" style="padding-top:22px">
-    <h5><b><i class="fa fa-dashboard"></i> Manage Interactions > Edit Interactions</b></h5>
+    <h5><b><i class="fa fa-dashboard"></i> Manage Interactions > Add Interactions</b></h5>
 </header>
 
 <div class="w3-row-padding w3-half w3-margin-bottom">
@@ -14,7 +14,7 @@
             <h2>Header</h2>
         </div>
 
-        <form:form method="POST" action="/My Life/interactions/update" cssClass="w3-container" commandName="interactions">
+        <form:form method="POST" action="/mylife/interactions/editsave" cssClass="w3-container" commandName="interactions">
             <form:hidden path="interactionid"  />
 
             <div class="w3-padding-8">

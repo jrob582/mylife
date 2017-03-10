@@ -4,7 +4,7 @@
 <%@ include file="theme/header.jsp" %>
 
 <header class="w3-container" style="padding-top:22px">
-  <h5><b><i class="fa fa-dashboard"></i> Manage Users > Add User</b></h5>
+  <h5><b><i class="fa fa-dashboard"></i> Manage Users > Edit User</b></h5>
 </header>
 
 <div class="w3-row-padding w3-half w3-margin-bottom">
@@ -14,12 +14,9 @@
       <h2>User Information</h2>
     </div>
 
-    <form:form method="post" action="/mylife/user/save" cssClass="w3-container" commandName="user">
+    <form:form method="post" action="/mylife/user/editsave" cssClass="w3-container" commandName="user">
         <form:hidden path="username" />
       <div class="w3-padding-8">
-        <label><b>Username</b></label>
-        <form:input path="username" cssClass="w3-input w3-border"  />
-        <form:errors path="username" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
       
         <label><b>Password</b></label>
         <form:password path="password" cssClass="w3-input w3-border"  />

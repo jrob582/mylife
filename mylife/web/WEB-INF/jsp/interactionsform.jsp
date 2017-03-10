@@ -14,11 +14,10 @@
             <h2>Interactions Information</h2>
         </div>
 
-        <form:form method="post" action="/My Life/interactions/save" cssClass="w3-container" commandName="interactions"> 
+        <form:form method="post" action="/mylife/interactions/editsave" cssClass="w3-container" commandName="interactions"> 
             <div class="w3-padding-8">
                 <label><b>Interactions</b></label>
-                <form:input path="Interaction_Id" cssClass="w3-input w3-border" placeholder="Interaction_Id"  />
-                <form:errors path="Interaction_Id" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
+              
                 <form:input path="Clients_id" cssClass="w3-input w3-border" placeholder="Clients_id"  />
                 <form:errors path="Clients_id" cssClass="w3-red w3-padding-8 w3-panel" cssStyle="display: block; width: 100%; font-weight:bold;" />
                 <form:input path="Date_of_contact" cssClass="w3-input w3-border" placeholder="Date_of_contact"  />
@@ -44,10 +43,10 @@
 
                 <c:otherwise>
                     <div class="w3-padding-8">
-                        <label><b>Client / Prospect</b></label>
+                        <label><b>Status</b></label>
                         <form:select path="clients_id" cssClass="w3-select w3-border">
-                            <form:option value="-1">Select Client</form:option>
-                            <form:option value="-2">Select Prospect</form:option>
+                            <form:option value="-1">Client</form:option>
+                            <form:option value="-2">Prospect</form:option>
                             <form:options items="${client1.client1}"  />
                         
                         </form:select>
@@ -56,7 +55,7 @@
             </c:choose>
 
             <div class="w3-padding-8">
-                <button type="submit" class="w3-btn w3-padding w3-red" style="width:120px">Save</button>
+                <button type="submit" class="w3-btn w3-padding w3-red" style="width:120px">Add</button>
             </div>
         </form:form>
     </div>

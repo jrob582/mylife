@@ -18,10 +18,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import java.util.HashMap;
 import java.util.Map;
+import javax.validation.Valid;
 import mylife.objects.Message;
 import mylife.respository.client1DAO;
 import mylife.objects.client1;
 import mylife.objects.interactions;
+import org.springframework.validation.BindingResult;
 //import mylife.validator.interactionsValidator;
 //import org.springframework.validation.Validator;
 //import org.springframework.web.bind.WebDataBinder;
@@ -87,7 +89,12 @@ public class interactionsController {
         return this.viewinteractions(1, request);
     }
     
-    
+    /**
+     *
+     * @param pageid
+     * @param request
+     * @return
+     */
     @RequestMapping("/interactions/viewinteractions/{pageid}")
     public ModelAndView viewinteractions(@PathVariable int pageid, HttpServletRequest request) {
         int total = 25;
@@ -117,6 +124,11 @@ public class interactionsController {
         return new ModelAndView("viewinteractions", context);
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "/interactions/editinteractions/{id}")
     public ModelAndView edit(@PathVariable int id) {
         interactions interactions = dao.getinteractionsById(id);
@@ -126,8 +138,21 @@ public class interactionsController {
         return new ModelAndView("interactionseditform", "interactions", interactions);
     }
 
-    @RequestMapping(value = "//editsave", method = RequestMethod.POST)
-    public ModelAndView editsave(@ModelAttribute("interaction") interactions interactions, HttpServletRequest request) {
+    /**
+     *
+     * @param interactions
+     * @param result
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/interactions/editsave", method = RequestMethod.POST)
+    public ModelAndView editsave(@ModelAttribute("interactions")@Valid interactions interactions,BindingResult result, HttpServletRequest request) {
+        
+        if (result.hasErrors()) {
+            logger.info(result.getFieldError().toString());
+            return new ModelAndView("interactionseditform", "interactions", interactions);
+        }
+        
         int r = dao.update(interactions);
 
         Message msg = null;

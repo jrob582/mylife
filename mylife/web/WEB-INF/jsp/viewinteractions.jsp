@@ -23,9 +23,11 @@
 
   <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">  
     <tr>
-      <th>Interactionid</th>
-      <th>First Name</th>
-      <th>Action</th>
+      <th>Client Id</th>
+      <th>Contact Name</th>
+      <th>Date of Contact</th>
+      <th>Contact Type</th>
+      <th>Conversation</th>
     </tr>  
 
     <c:forEach var="interactions" items="${list}">   

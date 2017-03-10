@@ -120,7 +120,7 @@ public class userController{
 
         Message msg = null;
         if (r == 1) {
-            msg = new Message(Message.Level.INFO, "user has been successfully saved");
+            msg = new Message(Message.Level.INFO, "User has been successfully saved");
         } else {
             msg = new Message(Message.Level.ERROR, "Edit user failed");
         }

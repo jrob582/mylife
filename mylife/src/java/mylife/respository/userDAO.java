@@ -57,14 +57,14 @@ public class userDAO {
     
 
     public int update(user user) {
-        String sql = "UPDATE users SET username=?, password= md5(?), enabled= ? WHERE userid= ?";
+        String sql = "UPDATE users SET  password= md5(?), enabled= ? WHERE username= ?";
 
-        Object[] values = {user.getUsername(), user.getPassword(), user.getEnabled()};
+        Object[] values = { user.getPassword(), user.getEnabled(), user.getUsername() };
         return template.update(sql, values);
     }
 
     public int delete(String username) {
-        String sql = "DELETE FROM user_roles WHERE username=?";
+        String sql = "DELETE FROM users WHERE username=?";
 
         Object[] values = {username};
         return template.update(sql, values);
@@ -84,7 +84,7 @@ public class userDAO {
     }
 
     public user getuserById(int id) {
-        String sql = "SELECT username AS id, (username, password, enabled ) FROM users WHERE username = ?";
+        String sql = "SELECT username, (username, password, enabled ) FROM users WHERE username = ?";
         return template.queryForObject(sql, new Object[]{id}, new BeanPropertyRowMapper<user>(user.class));
     }
 

@@ -43,7 +43,7 @@
             </div>
 
             <div class="w3-padding-8">
-                <button type="submit" class="w3-btn w3-padding w3-red" style="width:120px">Save</button>
+                <button type="submit" class="w3-btn w3-padding w3-red" style="width:120px">Add</button>
             </div>
         </form:form>
     </div>

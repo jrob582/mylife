@@ -26,10 +26,19 @@ public class interactionsDAO {
     
      private static final Logger logger = Logger.getLogger(interactionsDAO.class.getName());
 
+    /**
+     *
+     * @param template
+     */
     public void setTemplate(JdbcTemplate template){
         this.template = template;
     }
 
+    /**
+     *
+     * @param interactions
+     * @return
+     */
     public int save(interactions interactions){
         String sql = "INSERT INTO interactions (clientsid, date_of_contact, contact_name, contact_type, coversation) values(?,?,?,?,?)";
         
@@ -41,24 +50,39 @@ public class interactionsDAO {
         return template.update(sql,values);
     }
 
+    /**
+     *
+     * @param interactions
+     * @return
+     */
     public int update(interactions interactions){
-        String sql = "UPDATE interaction SET clientsid=?, date_of_contact=?, contact_name=?, contact_type=?, conversation=?,  WHERE interactionsid= ?"; 
+        String sql = "UPDATE interactions SET clientsid=?, date_of_contact=?, contact_name=?, contact_type=?, conversation=?  WHERE interactionid= ?"; 
         
          Object[] values = {interactions.getClients_id(), interactions.getDate_of_contact(), interactions.getContact_name(), interactions.getContact_type(), interactions.getConversation(), interactions.getInteraction_Id()};
         return template.update(sql,values);
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public int delete(int id){
-        String sql = "DELETE FROM interactions WHERE interactionsid=?" ;
+        String sql = "DELETE FROM interactions WHERE interactionid=?" ;
         
         Object[] values = {id};
         return template.update(sql,values);
     }
-        public List<interactions> getinteractionsList(){
+
+    /**
+     *
+     * @return
+     */
+    public List<interactions> getinteractionsList(){
         return template.query("SELECT * FROM interactions",new RowMapper<interactions>(){
             public interactions mapRow(ResultSet rs,int row) throws SQLException{
                 interactions i = new interactions();
-                i.setInteraction_Id(rs.getInt("interactionsid"));
+                i.setInteraction_Id(rs.getInt("interactionid"));
                 i.setClients_id(rs.getInt(" Clients_id"));
                 i.setDate_of_contact(rs.getString("Date_of_contact"));
                 i.setContact_name(rs.getString("First_name"));
@@ -70,12 +94,22 @@ public class interactionsDAO {
         });
     }
 
-            public interactions getinteractionsById(int id){
-        String sql = "SELECT interactionsId AS id, (clientsid, date_of_contact, contact_name, contact_type, conversation,) FROM interactions WHERE interactionsId = ?";
+    /**
+     *
+     * @param id
+     * @return
+     */
+    public interactions getinteractionsById(int id){
+        String sql = "SELECT interactionId, (clientsid, date_of_contact, contact_name, contact_type, conversation,) FROM interactions WHERE interactionId = ?";
         return template.queryForObject(sql,new Object[]{id},new BeanPropertyRowMapper<interactions>(interactions.class));
     }
         
-        
+    /**
+     *
+     * @param start
+     * @param total
+     * @return
+     */
     public List<interactions> getinteractionsByPage(int start, int total){
         String sql = "SELECT * FROM interactions LIMIT " + (start - 1) + "," + total;
         return template.query(sql,new RowMapper<interactions>(){
@@ -94,6 +128,11 @@ public class interactionsDAO {
             }
         });
     }
+
+    /**
+     *
+     * @return
+     */
     public int getinteractionsCount() {
         String sql = "SELECT COUNT(interactionID) AS rowcount FROM interactions";
         SqlRowSet rs = template.queryForRowSet(sql);
@@ -104,7 +143,12 @@ public class interactionsDAO {
         
         return 1;
     }
-        public Map<Integer,String> getclient1Map() {
+
+    /**
+     *
+     * @return
+     */
+    public Map<Integer,String> getclient1Map() {
         Map<Integer,String> client1 = new LinkedHashMap<Integer,String>();
         String sql = "SELECT idclient1, firstname FROM client1 ORDER BY firstname";
         
