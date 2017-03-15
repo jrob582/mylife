@@ -22,6 +22,9 @@ public class user  implements Serializable {
     private List<String> roles;
     private Map<String, String> rolemap;
     
+    /**
+     *
+     */
     public user(){
         this.rolemap = new LinkedHashMap<String,String>();
         this.rolemap.put("ROLE_USER", "user");

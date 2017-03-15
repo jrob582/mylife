@@ -35,11 +35,22 @@ public class client1Controller {
 
     private static final Logger logger = Logger.getLogger(client1Controller.class.getName());
 
+    /**
+     *
+     * @return
+     */
     @RequestMapping("/client1/client1form")
     public ModelAndView showform() {
         return new ModelAndView("client1form", "client1", new client1());
     }
 
+    /**
+     *
+     * @param client1
+     * @param result
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/client1/save", method = RequestMethod.POST)
     public ModelAndView save(@ModelAttribute("client1") @Valid client1 client1, BindingResult result, HttpServletRequest request) {
         if (result.hasErrors()) {
@@ -62,11 +73,22 @@ public class client1Controller {
         return new ModelAndView("redirect:/client1/viewclient1");
     }
 
+    /**
+     *
+     * @param request
+     * @return
+     */
     @RequestMapping("/client1/viewclient1")
     public ModelAndView viewclient1(HttpServletRequest request) {
         return this.viewclient1(1, request);
     }
 
+    /**
+     *
+     * @param pageid
+     * @param request
+     * @return
+     */
     @RequestMapping("/client1/viewclient1/{pageid}")
     public ModelAndView viewclient1(@PathVariable int pageid, HttpServletRequest request) {
         int total = 10;
@@ -108,6 +130,13 @@ public class client1Controller {
         return new ModelAndView("client1editform", "client1", client1);
     }
 
+    /**
+     *
+     * @param client1
+     * @param result
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/client1/editsave", method = RequestMethod.POST)
     public ModelAndView editsave(@ModelAttribute("client1") @Valid client1 client1, BindingResult result, HttpServletRequest request) {
         if (result.hasErrors()) {
@@ -129,6 +158,12 @@ public class client1Controller {
         return new ModelAndView("redirect:/client1/viewclient1");
     }
 
+    /**
+     *
+     * @param id
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/client1/deleteclient1/{id}", method = RequestMethod.GET)
     public ModelAndView delete(@PathVariable int id, HttpServletRequest request) {
         int r = dao.delete(id);
@@ -146,15 +181,27 @@ public class client1Controller {
         return new ModelAndView("redirect:/client1/viewclient1");
     }
 
+    /**
+     *
+     * @param webDataBinder
+     */
     @InitBinder("client1")
     public void initBinder(WebDataBinder webDataBinder) {
         webDataBinder.setValidator(client1Validator);
     }
 
+    /**
+     *
+     * @return
+     */
     public client1Validator getclient1Validator() {
         return client1Validator;
     }
 
+    /**
+     *
+     * @param client1Validator
+     */
     public void setclient1Validator(client1Validator client1Validator) {
         this.client1Validator = client1Validator;
     }

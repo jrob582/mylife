@@ -40,6 +40,10 @@ public class userController{
     
     private static final Logger logger = Logger.getLogger(userController.class.getName());
 
+    /**
+     *
+     * @return
+     */
     @RequestMapping("/user/userform")
     public ModelAndView showform(){
         user user = new user();
@@ -47,6 +51,13 @@ public class userController{
         return new ModelAndView("userform","user",user);
     }
     
+    /**
+     *
+     * @param user
+     * @param result
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/user/save", method = RequestMethod.POST)
     public ModelAndView save(@ModelAttribute("user") @Valid user user, BindingResult result, HttpServletRequest request){
         if(result.hasErrors()){
@@ -68,12 +79,23 @@ public class userController{
         return new ModelAndView("redirect:/user/viewuser");
     }
     
-        @RequestMapping("/user/viewuser")
+    /**
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping("/user/viewuser")
     public ModelAndView viewuser(HttpServletRequest request) {
         return this.viewuser(1, request);
     }
     
-        @RequestMapping("/user/viewuser/{pageid}")
+    /**
+     *
+     * @param pageid
+     * @param request
+     * @return
+     */
+    @RequestMapping("/user/viewuser/{pageid}")
     public ModelAndView viewuser(@PathVariable int pageid, HttpServletRequest request) {
         int total = 10;
         int start = 1;
@@ -102,13 +124,25 @@ public class userController{
         return new ModelAndView("viewuser", context);
     }
     
-        @RequestMapping(value = "/user/edituser/{username}")
+    /**
+     *
+     * @param username
+     * @return
+     */
+    @RequestMapping(value = "/user/edituser/{username}")
     public ModelAndView edit(@PathVariable String username) {
         user user = dao.getUsersbyUsername(username);
         
         return new ModelAndView("usereditform", "user", user);
     }
 
+    /**
+     *
+     * @param user
+     * @param result
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/user/editsave", method = RequestMethod.POST)
     public ModelAndView editsave(@ModelAttribute("user") @Valid user user, BindingResult result, HttpServletRequest request) {
         if (result.hasErrors()) {
@@ -130,7 +164,13 @@ public class userController{
         return new ModelAndView("redirect:/user/viewuser");
     }
     
-        @RequestMapping(value = "/user/deleteuser/{username}", method = RequestMethod.GET)
+    /**
+     *
+     * @param username
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/user/deleteuser/{username}", method = RequestMethod.GET)
     public ModelAndView delete(@PathVariable String username, HttpServletRequest request) {
         int r = dao.delete(username);
 

@@ -28,98 +28,183 @@ public class client1 implements Serializable {
     private String phone_number;
     private Map<String, String> states;
     
-    
-    
-    
-    
+    /**
+     *
+     * @return
+     */
     public int getIdclient1() {
         return idclient1;
     }
 
+    /**
+     *
+     * @param idclient1
+     */
     public void setIdclient1(int idclient1) {
         this.idclient1 = idclient1;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getFirstname() {
         return firstname;
     }
 
+    /**
+     *
+     * @param firstname
+     */
     public void setFirstname(String firstname) {
         this.firstname = firstname;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getLastname() {
         return lastname;
     }
 
+    /**
+     *
+     * @param lastname
+     */
     public void setLastname(String lastname) {
         this.lastname = lastname;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getAddressline1() {
         return addressline1;
     }
 
+    /**
+     *
+     * @param addressline1
+     */
     public void setAddressline1(String addressline1) {
         this.addressline1 = addressline1;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getAddressline2() {
         return addressline2;
     }
 
+    /**
+     *
+     * @param addressline2
+     */
     public void setAddressline2(String addressline2) {
         this.addressline2 = addressline2;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getCity() {
         return city;
     }
 
+    /**
+     *
+     * @param city
+     */
     public void setCity(String city) {
         this.city = city;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getState() {
         return state;
     }
 
+    /**
+     *
+     * @param state
+     */
     public void setState(String state) {
         this.state = state;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getZip() {
         return zip;
     }
 
+    /**
+     *
+     * @param zip
+     */
     public void setZip(String zip) {
         this.zip = zip;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     *
+     * @param email
+     */
     public void setEmail(String email) {
         this.email = email;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getCurrent_status() {
         return current_status;
     }
 
+    /**
+     *
+     * @param current_status
+     */
     public void setCurrent_status(String current_status) {
         this.current_status = current_status;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPhone_number() {
         return phone_number;
     }
 
+    /**
+     *
+     * @param phone_number
+     */
     public void setPhone_number(String phone_number) {
         this.phone_number = phone_number;
     }
 
+    @Override
     public String toString() {
         StringBuffer buffer = new StringBuffer();
        
@@ -137,7 +222,10 @@ public class client1 implements Serializable {
         return buffer.toString();
     }
     
-    
+    /**
+     *
+     * @return
+     */
     public Map<String, String> getStates() {
         states = new LinkedHashMap<>();
         states.put("Alabama", "Alabama");

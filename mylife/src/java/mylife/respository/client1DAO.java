@@ -25,10 +25,19 @@ public class client1DAO {
     
      private static final Logger logger = Logger.getLogger(client1DAO.class.getName());
 
+    /**
+     *
+     * @param template
+     */
     public void setTemplate(JdbcTemplate template){
         this.template = template;
     }
 
+    /**
+     *
+     * @param client1
+     * @return
+     */
     public int save(client1 client1){
         String sql = "INSERT INTO client1 (firstname, lastname, addressline1, addressline2, city, state, zip, email, currentstatus, phone_number) values(?,?,?,?,?,?,?,?,?,?)";
         
@@ -37,6 +46,11 @@ public class client1DAO {
         return template.update(sql,values);
     }
 
+    /**
+     *
+     * @param client1
+     * @return
+     */
     public int update(client1 client1){
         String sql = "UPDATE client1 SET firstname=?, lastname=?, addressline1=?, addressline2=?, city=?, state=?, zip=?, email=?, currentstatus=?, phone_number=? WHERE idclient1= ?"; 
         
@@ -44,13 +58,23 @@ public class client1DAO {
         return template.update(sql,values);
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public int delete(int id){
         String sql = "DELETE FROM client1 WHERE idclient1=?" ;
         
         Object[] values = {id};
         return template.update(sql,values);
     }
-        public List<client1> getclient1List(){
+
+    /**
+     *
+     * @return
+     */
+    public List<client1> getclient1List(){
         return template.query("SELECT * FROM client1",new RowMapper<client1>(){
             public client1 mapRow(ResultSet rs,int row) throws SQLException{
                 client1 c = new client1();
@@ -70,12 +94,22 @@ public class client1DAO {
         });
     }
 
-            public client1 getclient1ById(int id){
+    /**
+     *
+     * @param id
+     * @return
+     */
+    public client1 getclient1ById(int id){
         String sql = "SELECT idclient1, firstname, lastname, addressline1, addressline2, city, state, zip, email, currentstatus, phone_number FROM client1 WHERE idclient1 = ?";
         return template.queryForObject(sql,new Object[]{id},new BeanPropertyRowMapper<client1>(client1.class));
     }
         
-        
+    /**
+     *
+     * @param start
+     * @param total
+     * @return
+     */
     public List<client1> getclient1ByPage(int start, int total){
         String sql = "SELECT * FROM client1 LIMIT " + (start - 1) + "," + total;
         return template.query(sql,new RowMapper<client1>(){
@@ -99,6 +133,11 @@ public class client1DAO {
             }
         });
     }
+
+    /**
+     *
+     * @return
+     */
     public int getclient1Count() {
         String sql = "SELECT COUNT(idclient1) AS rowcount FROM client1";
         SqlRowSet rs = template.queryForRowSet(sql);
@@ -110,6 +149,11 @@ public class client1DAO {
         return 1;
     }
 
+    /**
+     *
+     * @param FirstName
+     * @return
+     */
     public client1 getclient1byFirstname(String FirstName) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

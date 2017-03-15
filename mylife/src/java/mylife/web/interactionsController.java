@@ -24,10 +24,10 @@ import mylife.respository.client1DAO;
 import mylife.objects.client1;
 import mylife.objects.interactions;
 import org.springframework.validation.BindingResult;
-//import mylife.validator.interactionsValidator;
-//import org.springframework.validation.Validator;
-//import org.springframework.web.bind.WebDataBinder;
-//import org.springframework.web.bind.annotation.InitBinder;
+import mylife.validator.interactionsValidator;
+import org.springframework.validation.Validator;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 
 /**
  *
@@ -45,6 +45,10 @@ public class interactionsController {
     private static final Logger logger = Logger.getLogger(interactionsController.class.getName());
 //    private interactionsValidator interactionsValidator;
 
+    /**
+     *
+     * @return
+     */
     @RequestMapping("/interactions/interactionsform")
     public ModelAndView showform() {
         interactions interactions = new interactions();
@@ -53,6 +57,11 @@ public class interactionsController {
         return new ModelAndView("interactionsform", "interactions", interactions);
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @RequestMapping("/interactions/interactionsform/{id}")
     public ModelAndView showformWithclient1(@PathVariable int id) {
         
@@ -67,6 +76,12 @@ public class interactionsController {
         return new ModelAndView("interactionsform", "interactions", interactions);
     }
 
+    /**
+     *
+     * @param interactions
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/interactions/save", method = RequestMethod.POST)
     public ModelAndView save(@ModelAttribute("interactions") interactions interactions, HttpServletRequest request) {
         int r = dao.save(interactions);
@@ -84,7 +99,12 @@ public class interactionsController {
         return new ModelAndView("redirect:/interactions/viewinteractions");
     }
 
-        @RequestMapping("/interactions/viewinteractions")
+    /**
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping("/interactions/viewinteractions")
     public ModelAndView viewinteractions(HttpServletRequest request) {
         return this.viewinteractions(1, request);
     }

@@ -25,10 +25,19 @@ public class userDAO {
 
     private static final Logger logger = Logger.getLogger(userDAO.class.getName());
 
+    /**
+     *
+     * @param template
+     */
     public void setTemplate(JdbcTemplate template) {
         this.template = template;
     }
 
+    /**
+     *
+     * @param user
+     * @return
+     */
     public int save(user user) {
         String sql = "INSERT INTO users (username, password, enabled) values(?,md5(?),?)";
 
@@ -52,10 +61,11 @@ public class userDAO {
 
     }  
 
-    
-
-    
-
+    /**
+     *
+     * @param user
+     * @return
+     */
     public int update(user user) {
         String sql = "UPDATE users SET  password= md5(?), enabled= ? WHERE username= ?";
 
@@ -63,6 +73,11 @@ public class userDAO {
         return template.update(sql, values);
     }
 
+    /**
+     *
+     * @param username
+     * @return
+     */
     public int delete(String username) {
         String sql = "DELETE FROM users WHERE username=?";
 
@@ -70,6 +85,10 @@ public class userDAO {
         return template.update(sql, values);
     }
 
+    /**
+     *
+     * @return
+     */
     public List<user> getuserList() {
         return template.query("SELECT * FROM users", new RowMapper<user>() {
             public user mapRow(ResultSet rs, int row) throws SQLException {
@@ -83,11 +102,22 @@ public class userDAO {
         });
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public user getuserById(int id) {
         String sql = "SELECT username, (username, password, enabled ) FROM users WHERE username = ?";
         return template.queryForObject(sql, new Object[]{id}, new BeanPropertyRowMapper<user>(user.class));
     }
 
+    /**
+     *
+     * @param start
+     * @param total
+     * @return
+     */
     public List<user> getuserByPage(int start, int total) {
         String sql = "SELECT * FROM users LIMIT " + (start - 1) + "," + total; 
             
@@ -103,6 +133,10 @@ public class userDAO {
         });
     }
 
+    /**
+     *
+     * @return
+     */
     public int getuserCount() {
         String sql = "SELECT COUNT(username) AS rowcount FROM users";
         SqlRowSet rs = template.queryForRowSet(sql);
@@ -113,6 +147,12 @@ public class userDAO {
 
         return 1;
     }
+
+    /**
+     *
+     * @param username
+     * @return
+     */
     public user getUsersbyUsername(String username){
         String sql = "SELECT * FROM users WHERE username = ?";
          return template.queryForObject(sql, new Object[]{username}, new BeanPropertyRowMapper<user>(user.class));
